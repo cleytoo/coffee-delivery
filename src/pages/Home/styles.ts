@@ -2,9 +2,12 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5.625rem 0;
+  flex-direction: column;
+
+  > div {
+    display: flex;
+    padding: 5.625rem 0;
+  }
 
   h1 {
     font-family: 'Baloo 2', cursive;
@@ -24,8 +27,8 @@ export const InfoContainer = styled.div`
   margin-top: 4.125rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 40px;
-  row-gap: 20px;
+  column-gap: 2.5rem;
+  row-gap: 1.25rem;
 `
 
 export const Info = styled.div<{ bg: string }>`
@@ -47,5 +50,43 @@ export const Info = styled.div<{ bg: string }>`
     justify-content: center;
     color: ${(p) => p.theme.white};
     background-color: ${(p) => p.bg};
+  }
+`
+
+export const CoffeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  h1 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 2rem;
+  }
+
+  > div {
+    display: grid;
+    flex-direction: colu;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 2rem;
+    row-gap: 2.5rem;
+  }
+`
+
+export const CoffeCardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${(p) => p.theme['base-card']};
+  width: 16rem;
+  height: 19.375rem;
+
+  border-top-left-radius: 6px;
+  border-top-right-radius: 36px;
+  border-bottom-left-radius: 36px;
+  border-bottom-right-radius: 6px;
+
+  img {
+    height: 120px;
+    width: 120px;
+    margin-top: -20px;
   }
 `
