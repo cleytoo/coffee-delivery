@@ -7,7 +7,13 @@ import {
 } from './styles'
 
 import CoffeIllustration from '../../assets/coffe.svg'
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import {
+  Coffee,
+  Package,
+  ShoppingCart,
+  ShoppingCartSimple,
+  Timer,
+} from 'phosphor-react'
 
 import { Coffe, coffeList } from '../../constants/coffeList'
 
@@ -83,10 +89,14 @@ const CoffeCard = ({ coffe }: CoffeCardProps) => {
 
       <strong>{coffe.name}</strong>
       <p>{coffe.description}</p>
-      <div>
+
+      <footer>
         <p>R$ 10,00</p>
-        <button></button>
-      </div>
+        <button>contador</button>
+        <button>
+          <ShoppingCartSimple size={22} weight="fill" />
+        </button>
+      </footer>
     </CoffeCardContainer>
   )
 }

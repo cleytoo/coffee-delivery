@@ -56,10 +56,12 @@ export const Info = styled.div<{ bg: string }>`
 export const CoffeContainer = styled.div`
   display: flex;
   flex-direction: column;
+
   h1 {
     font-family: 'Baloo 2', cursive;
     font-weight: 800;
     font-size: 2rem;
+    margin-bottom: 54px;
   }
 
   > div {
@@ -88,5 +90,45 @@ export const CoffeCardContainer = styled.div`
     height: 120px;
     width: 120px;
     margin-top: -20px;
+  }
+
+  > div {
+    display: flex;
+    gap: 4px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+
+    span {
+      padding: 4px 8px;
+      font-size: 10px;
+      font-weight: bold;
+      border-radius: 10px;
+      text-transform: uppercase;
+      background-color: ${(p) => p.theme['yellow-light']};
+      color: ${(p) => p.theme['yellow-dark']};
+    }
+  }
+
+  strong {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 1.25rem;
+    line-height: 26px;
+    color: ${(p) => p.theme['base-subtitle']};
+  }
+
+  p {
+    font-size: 12px;
+    color: ${(p) => p.theme['base-label']};
+    line-height: 18.2px;
+    text-align: center;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    margin-bottom: 20px;
   }
 `
