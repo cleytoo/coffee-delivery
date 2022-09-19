@@ -36,6 +36,22 @@ export const ActionsContainer = styled.div`
     &:last-child {
       background-color: ${(p) => p.theme['yellow-light']};
       color: ${(p) => p.theme['yellow-dark']};
+      position: relative;
+
+      span {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        position: absolute;
+        background-color: ${(p) => p.theme['yellow-dark']};
+        color: ${(p) => p.theme['white']};
+        font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: -9px;
+        right: -13px;
+      }
     }
   }
 `

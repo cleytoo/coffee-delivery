@@ -1,9 +1,10 @@
-export interface Coffe {
+export interface Coffee {
   src: string
   categories: String[]
   name: string
   description: string
   amountValue: number
+  quantity?: number
 }
 
 import ExpressoTra from '../assets/imgs/Expresso.png'
@@ -21,7 +22,7 @@ import Havaiano from '../assets/imgs/Havaiano.png'
 import Arabe from '../assets/imgs/Arabe.png'
 import Irlandes from '../assets/imgs/Irlandês.png'
 
-export const coffeList: Coffe[] = [
+export const coffeeList: Coffee[] = [
   {
     src: ExpressoTra,
     categories: ['tradicional'],

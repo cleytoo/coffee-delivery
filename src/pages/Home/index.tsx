@@ -2,22 +2,45 @@ import {
   HomeContainer,
   InfoContainer,
   Info,
-  CoffeContainer,
-  CoffeCardContainer,
+  ListCoffeeContainer,
 } from './styles'
 
 import CoffeIllustration from '../../assets/coffe.svg'
-import {
-  Coffee,
-  Package,
-  ShoppingCart,
-  ShoppingCartSimple,
-  Timer,
-} from 'phosphor-react'
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
-import { Coffe, coffeList } from '../../constants/coffeList'
+import { coffeeList } from '../../constants/coffeeList'
+import { CoffeeCard } from '../../components/CoffeeCard'
+import { useState } from 'react'
 
 export const Home = () => {
+  const [coffees, setCoffees] = useState(() => {
+    const coffees = coffeeList.map((coffee) => ({ ...coffee, quantity: 0 }))
+    return coffees
+  })
+
+  const plusCoffee = (name: string) => {
+    setCoffees((state) =>
+      state.map((coffee) => {
+        if (coffee.name === name) {
+          return { ...coffee, quantity: coffee.quantity + 1 }
+        } else {
+          return coffee
+        }
+      })
+    )
+  }
+  const minusCoffee = (name: string) => {
+    setCoffees((state) =>
+      state.map((coffee) => {
+        if (coffee.name === name && coffee.quantity > 0) {
+          return { ...coffee, quantity: coffee.quantity-- }
+        } else {
+          return coffee
+        }
+      })
+    )
+  }
+
   return (
     <HomeContainer>
       <div>
@@ -61,42 +84,19 @@ export const Home = () => {
         <img src={CoffeIllustration} alt="" />
       </div>
 
-      <CoffeContainer>
+      <ListCoffeeContainer>
         <h1>Nossos cafés</h1>
         <div>
-          {coffeList.map((coffe) => (
-            <CoffeCard coffe={coffe} />
+          {coffees.map((coffee) => (
+            <CoffeeCard
+              key={coffee.name}
+              coffee={coffee}
+              plus={() => plusCoffee(coffee.name)}
+              minus={() => minusCoffee(coffee.name)}
+            />
           ))}
         </div>
-      </CoffeContainer>
+      </ListCoffeeContainer>
     </HomeContainer>
-  )
-}
-
-interface CoffeCardProps {
-  coffe: Coffe
-}
-
-const CoffeCard = ({ coffe }: CoffeCardProps) => {
-  return (
-    <CoffeCardContainer>
-      <img src={coffe.src} alt="" />
-      <div>
-        {coffe.categories.map((category, index) => (
-          <span key={index}>{category}</span>
-        ))}
-      </div>
-
-      <strong>{coffe.name}</strong>
-      <p>{coffe.description}</p>
-
-      <footer>
-        <p>R$ 10,00</p>
-        <button>contador</button>
-        <button>
-          <ShoppingCartSimple size={22} weight="fill" />
-        </button>
-      </footer>
-    </CoffeCardContainer>
   )
 }
